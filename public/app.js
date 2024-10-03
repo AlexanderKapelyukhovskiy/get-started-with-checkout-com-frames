@@ -1,7 +1,4 @@
 (async () => {
-  // Insert your public key here
-  const PUBLIC_KEY = "xxx";
-
   const payButton = document.getElementById('pay-button');
   const form = document.getElementById('payment-form');
   const addressLine1 = document.getElementById('addressLine1');
@@ -12,8 +9,11 @@
   const country = document.getElementById('country');
   const phone = document.getElementById('phone');
   
+  const response = await fetch('/config');
+  const config = await response.json(); 
+
   Frames.init({
-    publicKey: PUBLIC_KEY,
+    publicKey: config.apiKey,
     localization: {
       cardNumberPlaceholder: 'Card number',
       expiryMonthPlaceholder: 'MM',
@@ -85,7 +85,7 @@
 
         if (response.ok) {  // Check if the response status is OK (200-299)
           const responseData = await response.json();  // Read and parse the JSON response
-          alert(`${responseData.result} - ${responseData.token}`)
+          alert(`${responseData.result}. Token: ${responseData.token}. SourceId: ${responseData.instrument.id}`)
         } else {
           console.error('Error saving card:', response.statusText);  // Handle any errors
         }

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const fetch = require("node-fetch");
 const app = express();
@@ -7,7 +8,13 @@ app.use(express.json());
 
 
 // Insert your secret key here
-const SECRET_KEY = "xxx";
+const SECRET_KEY = process.env.SECRET_KEY;
+
+app.get('/config', (req, res) => {
+  res.json({
+    apiKey: process.env.PUBLIC_KEY
+  });
+});
 
 app.post("/save-card", async (req, res) => {
   const { token } = req.body;  // Destructuring the token from the request body
@@ -32,12 +39,12 @@ app.post("/save-card", async (req, res) => {
       }),
     }
   );
-  const parsedPayload = await request.json();
-  console.log(parsedPayload)
+  const instrument = await request.json();
+  console.log(instrument)
 
   // Handle the rest of your save-card logic here
 
-  res.send({result: 'Card saved successfully', token});  // Send a response back to the client
+  res.send({result: 'Card saved successfully', token, instrument});  // Send a response back to the client
 });
 
 
