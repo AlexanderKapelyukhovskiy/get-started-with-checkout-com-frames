@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Checkout Frame Example</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+
+    <body>
+        <form>
+            <div class="container">
+                <div id="flow-container"></div>
+            </div>
+            <span id="error-message"></span>
+            <span id="successful-payment-message"></span>
+        </form>
+
+        <form id="payment-form" method="POST" action="https://merchant.com/charge-card">
+            <div>card number</div>
+            <div class="card-number-frame">
+                <!-- card number will be added here -->
+            </div>
+            <div>expiry date</div>
+            <div class="expiry-date-frame">
+                <!-- expiry date will be added here -->
+            </div>
+            <div>cvv frame</div>
+            <div class="cvv-frame">
+                <!-- cvv frame will be added here -->
+            </div>
+            <div>Address Line1</div>
+            <div class="addressLine1">
+                <input type="text" id="addressLine1" value="123 Anywhere St."/>
+            </div>
+            <div>Address Line2</div>
+            <div class="addressLine2">
+                <input type="text" id="addressLine2" value="Apt. 456"/>
+            </div>
+            <div>Zip</div>
+            <div class="zip">
+                <input type="text" id="zip" value="123456"/>
+            </div>
+            <div>City</div>
+            <div class="city">
+                <input type="text" id="city" value="Anytown"/>
+            </div>
+            <div>State</div>
+            <div class="state">
+                <input type="text" id="state" value="Alabama"/>
+            </div>
+            <div>Country</div>
+            <div class="country">
+                <input type="text" id="country" value="US"/>
+            </div>
+            <div>phone</div>
+            <div class="phone">
+                <input type="text" id="phone" value="5551234567"/>
+            </div>
+            <button id="pay-button" disabled>Create Token</button>
+        </form>
+
+        <script src="https://cdn.checkout.com/js/framesv2.min.js"></script>
+
+        <script src="app.js"></script>
+    </body>
+</html>
