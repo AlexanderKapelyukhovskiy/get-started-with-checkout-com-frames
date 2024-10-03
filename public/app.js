@@ -83,10 +83,8 @@
           body: JSON.stringify({ token: data.token }),  // Use body for the request payload
         });
 
-        //form.submit();
         if (response.ok) {  // Check if the response status is OK (200-299)
           const responseData = await response.json();  // Read and parse the JSON response
-          triggerToast("successToast");
           alert(`${responseData.result} - ${responseData.token}`)
         } else {
           console.error('Error saving card:', response.statusText);  // Handle any errors
