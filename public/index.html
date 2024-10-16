@@ -16,7 +16,7 @@
             <span id="successful-payment-message"></span>
         </form>
 
-        <form id="payment-form" method="POST" action="https://merchant.com/charge-card">
+        <form id="payment-form" method="POST"  action="https://merchant.com/charge-card" style="display: none;">
             <div>card number</div>
             <div class="card-number-frame">
                 <!-- card number will be added here -->
@@ -60,7 +60,10 @@
             <button id="pay-button" disabled>Create Token</button>
         </form>
 
-        <script src="https://cdn.checkout.com/js/framesv2.min.js"></script>
+        <div> Add New Card Form:</div>
+        <button id="get-pay-url-button">Add Card</button>
+
+        <!-- <script src="https://cdn.checkout.com/js/framesv2.min.js"></script> -->
 
         <script src="app.js"></script>
     </body>
