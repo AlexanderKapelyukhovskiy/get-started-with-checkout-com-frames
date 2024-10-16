@@ -1,6 +1,4 @@
 (async () => {
-  const getPayUrlButton = document.getElementById('get-pay-url-button');
-
   const payButton = document.getElementById('pay-button');
   const form = document.getElementById('payment-form');
   const addressLine1 = document.getElementById('addressLine1');
@@ -13,27 +11,6 @@
   
   const response = await fetch('/config');
   const config = await response.json(); 
-
-  getPayUrlButton.addEventListener('click', async function(event) {
-    event.preventDefault();
-    
-    const response = await fetch('/add-card', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-
-    const result = await response.json();
-
-    if (response.ok) {
-      console.log('Card added successfully', result);
-      window.open(result.redirect_url, '_blank');
-    } else {
-      console.error('Failed to add card', result);
-      alert('error');
-    }
-  });
 
   Frames.init({
     publicKey: config.apiKey,
